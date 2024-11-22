@@ -5,7 +5,6 @@
   list-style      : none;
   margin          : 0;
   overflow        : auto;
-  padding-block   : var(--space-l);
   scroll-behavior : smooth;
   scroll-snap-type: x mandatory;
 
@@ -27,7 +26,7 @@
   }
 
   &--gallery {
-    column-width  : 20ch;
+    column-width  : 30ch;
     display       : block;
     flex-direction: column;
     gap           : 1ch;

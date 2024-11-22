@@ -1,5 +1,11 @@
 @import "mixins";
 
+@layer reset,
+layouts,
+components,
+utilities,
+print;
+
 @layer reset {
   @import "reset";
   @import "fonts";
@@ -67,7 +73,7 @@
   .light,
   .dark,
   body {
-    color: hsl(var(--fg-contrast) / 80%);
+    color: hsl(var(--fg-contrast));
   }
 
   :root {
@@ -127,6 +133,20 @@
     stroke-linecap : round;
   }
 
+  .material-symbol,
+  .material-icon {
+    font-family: 'Material Symbols Rounded';
+    font-size: 1em;
+    font-style: normal;
+    font-weight: inherit;
+    user-select: none;
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 200,
+      'GRAD' 0,
+      'opsz' 24
+  }
+
   a {
     box-decoration-break: clone;
     color               : hsl(var(--fg-default));
@@ -144,7 +164,7 @@
       border-radius: var(--ideal-radius);
     }
 
-    &:not(.no-arrow)[target="_blank"] {
+    &:not(.no-arrow):not(.button)[target="_blank"] {
       display: inline-flex;
       gap    : 1ch;
 
@@ -175,9 +195,22 @@
     }
 
     &:focus-visible {
-      color           : hsl(var(--primary-900));
-      outline-color   : hsl(var(--primary-500) / 1);
-      outline-offset  : var(--radius-2);
+      color         : hsl(var(--primary-900));
+      outline-color : hsl(var(--primary-500) / 1);
+      outline-offset: var(--radius-2);
+    }
+  }
+
+  pre[class^=language] {
+    outline       : var(--radius-1) solid;
+    outline-color : hsl(var(--primary-500) / 0);
+    outline-offset: var(--ideal-radius);
+    transition    : outline 200ms, outline-offset 200ms;
+
+    &:focus-visible {
+      color         : hsl(var(--primary-900));
+      outline-color : hsl(var(--primary-500) / 1);
+      outline-offset: var(--radius-2);
     }
   }
 
@@ -308,6 +341,7 @@
 @layer components {
   /* COMPONENTS */
   @import "components/badge";
+  @import "components/banner";
   @import "components/button";
   @import "components/breadcrumb.scss";
   @import "components/card";
@@ -335,6 +369,7 @@
   @import "components/logo.scss";
   @import "components/spotlight.scss";
   @import "components/unfurl.scss";
+  @import "components/pagination.scss";
 }
 
 @layer utilities {
